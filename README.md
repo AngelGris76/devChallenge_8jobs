@@ -17,6 +17,6 @@ https://api.adzuna.com/v1/api/jobs/{country code}/search/{page number}?app_id={Y
 
 ### Parametros para la api
 
-location: ubicacion del trabajo
-keyword: clave a buscar
+where: ubicacion del trabajo
+what: clave a buscar
 full_time: si es igual a 1, indica trabajos full time
