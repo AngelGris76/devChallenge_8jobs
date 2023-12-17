@@ -20,8 +20,6 @@ const App = () => {
 
 	const { jobs, refreshJobs } = useJobs({ page, location, keyWord, fullTime });
 
-	console.log(jobs);
-
 	return (
 		<>
 			<h1>Jobs search app</h1>
@@ -51,9 +49,10 @@ const App = () => {
 									refreshJobs();
 								}}
 							/>
-							{jobs.searching ? (
-								<p>buscando</p>
-							) : (
+
+							{jobs.searching && <p>buscando</p>}
+
+							{!jobs.searching && !jobs.error && (
 								<>
 									<JobsList jobs={jobs.data} />
 									<SelectPage
@@ -65,6 +64,9 @@ const App = () => {
 										}}
 									/>
 								</>
+							)}
+							{!jobs.searching && jobs.error && (
+								<p>search error, please try later</p>
 							)}
 						</>
 					}
