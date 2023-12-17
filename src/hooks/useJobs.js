@@ -33,7 +33,14 @@ const useJobs = ({ page, location, keyWord, fullTime }) => {
 			.catch((err) => {
 				if (err instanceof AbortError)
 					return console.log('react strict mode cancel fetch');
+
 				console.log(err.message);
+				setJobs({
+					totalPages: 0,
+					data: [],
+					searching: false,
+					error: 'not conect',
+				});
 			});
 
 		return () => {
