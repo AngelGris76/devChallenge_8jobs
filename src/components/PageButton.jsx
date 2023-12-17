@@ -1,7 +1,7 @@
-const PageButton = ({ text, onClick }) => {
+const PageButton = ({ text, onClick, ...props }) => {
 	return (
 		<li>
-			<button type='button' onClick={onClick}>
+			<button type='button' {...props} onClick={onClick}>
 				{text}
 			</button>
 		</li>
