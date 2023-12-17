@@ -5,9 +5,11 @@ const Description = () => {
 
 	return (
 		<>
-			<Link to={`${state.estado.pathname}${state.estado.search}`}>go back</Link>
+			<Link to={`${state.urlLocation.pathname}${state.urlLocation.search}`}>
+				go back
+			</Link>
 			<div>
-				<h2>Job description</h2>
+				<p>{state.description}</p>
 			</div>
 		</>
 	);
