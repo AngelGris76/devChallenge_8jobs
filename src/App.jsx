@@ -1,74 +1,32 @@
-import { useEffect } from 'react';
-import {
-	Link,
-	Navigate,
-	Route,
-	Routes,
-	useLocation,
-	useSearchParams,
-} from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import SelectPage from './components/SelectPage';
 import Filter from './components/Filter';
 import Description from './components/Description';
 import JobsList from './components/JobsList';
+import useFilters from './hooks/useFilters';
+import useJobs from './hooks/useJobs';
 
 const App = () => {
-	const [searchParams, setSearchParams] = useSearchParams();
-	const location = useLocation();
+	const {
+		page,
+		location,
+		keyWord,
+		fullTime,
+		changePage,
+		changeCityFilter,
+		changeJobTime,
+		changeKeyWordFilter,
+	} = useFilters();
 
-	const params = Object.fromEntries(searchParams.entries());
-	const filter = {
-		page: params.page,
-		location: params.location || null,
-		keyWord: params.keyword || null,
-		fullTime: params.full_time || null,
-	};
+	const { jobs, refreshJobs } = useJobs({ page, location, keyWord, fullTime });
 
-	const changePage = (newPage) => {
-		const stringPage = newPage.toString();
-		setSearchParams((prev) => {
-			prev.set('page', stringPage);
-			return prev;
-		});
-	};
-
-	const changeJobTime = () => {
-		setSearchParams((prev) => {
-			if (filter.fullTime) prev.delete('full_time');
-			else prev.set('full_time', 1);
-			return prev;
-		});
-	};
-
-	const changeCityFilter = (newCity) => {
-		setSearchParams((prev) => {
-			if (!newCity) prev.delete('location');
-			else prev.set('location', newCity);
-			return prev;
-		});
-	};
-
-	const changeKeyWordFilter = (newKeyWord) => {
-		setSearchParams((prev) => {
-			if (!newKeyWord) prev.delete('keyword');
-			else prev.set('keyword', newKeyWord);
-			return prev;
-		});
-	};
-
-	useEffect(() => {}, [
-		filter.page,
-		filter.location,
-		filter.keyWord,
-		filter.fullTime,
-	]);
+	console.log(jobs);
 
 	return (
 		<>
 			<h1>Jobs search app</h1>
-			<Link to='/description' state={{ estado: location }}>
-				go to description
-			</Link>
+			<p>just for USA jobs</p>
+
 			<Routes>
 				<Route path='/' element={<Navigate to='/search?page=1' />} />
 				<Route path='/description' element={<Description />} />
@@ -77,15 +35,37 @@ const App = () => {
 					element={
 						<>
 							<Filter
-								fullTime={filter.fullTime}
-								filterLocation={filter.location}
-								filterKeyWord={filter.keyWord}
-								changeJobTime={changeJobTime}
-								changeCityFilter={changeCityFilter}
-								changeKeyWordFilter={changeKeyWordFilter}
+								fullTime={fullTime}
+								filterLocation={location}
+								filterKeyWord={keyWord}
+								changeJobTime={(newTime) => {
+									changeJobTime(newTime);
+									refreshJobs();
+								}}
+								changeCityFilter={(newCity) => {
+									changeCityFilter(newCity);
+									refreshJobs();
+								}}
+								changeKeyWordFilter={(newKeyword) => {
+									changeKeyWordFilter(newKeyword);
+									refreshJobs();
+								}}
 							/>
-							<JobsList />
-							<SelectPage actualPage={filter.page} changePage={changePage} />
+							{jobs.searching ? (
+								<p>buscando</p>
+							) : (
+								<>
+									<JobsList jobs={jobs.data} />
+									<SelectPage
+										totalPages={jobs.totalPages}
+										actualPage={page}
+										changePage={(newPage) => {
+											changePage(newPage);
+											refreshJobs();
+										}}
+									/>
+								</>
+							)}
 						</>
 					}
 				/>
