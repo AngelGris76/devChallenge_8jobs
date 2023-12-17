@@ -5,7 +5,7 @@ const useFilters = () => {
 
 	const params = Object.fromEntries(searchParams.entries());
 	const filter = {
-		page: params.page || 1,
+		page: parseInt(params.page) || 1,
 		location: params.location || null,
 		keyWord: params.keyword || null,
 		fullTime: params.full_time || null,
