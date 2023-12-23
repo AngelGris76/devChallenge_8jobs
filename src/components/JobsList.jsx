@@ -1,8 +1,6 @@
 import JobResume from './JobResume';
 
 const JobsList = ({ jobs }) => {
-	console.log(jobs);
-
 	const renderedJobs = jobs.map((job) => (
 		<JobResume
 			key={job.id}
@@ -15,19 +13,7 @@ const JobsList = ({ jobs }) => {
 		/>
 	));
 
-	return (
-		<ul>
-			{renderedJobs}
-			{/*
-			<JobResume
-				company={job.company.display_name}
-				location={job.location}
-				created={job.created}
-				contractType={job.contract}
-			/>
-	*/}
-		</ul>
-	);
+	return <ul>{renderedJobs}</ul>;
 };
 
 export default JobsList;
