@@ -1,4 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
+import LocationIcon from './icons/LocationIcon';
+import ClockIcon from './icons/ClockIcon';
 
 const JobResume = ({
 	company,
@@ -14,11 +16,24 @@ const JobResume = ({
 	return (
 		<li>
 			<Link to='/Description' state={{ description, urlLocation }}>
-				<span>{company}</span>
-				<span>{title}</span>
-				<span>{location}</span>
-				<span>{created}</span>
-				{isFullTime && <span>{contractType}</span>}
+				<div>
+					<img src='' alt={`${company} logo`} />
+				</div>
+				<div>
+					<span>{company}</span>
+					<span>{title}</span>
+					{isFullTime && <span>{contractType}</span>}
+				</div>
+				<div>
+					<span>
+						<LocationIcon width='24px' height='24px' />
+						{location}
+					</span>
+					<span>
+						<ClockIcon width='24px' height='24px' />
+						{created}
+					</span>
+				</div>
 			</Link>
 		</li>
 	);

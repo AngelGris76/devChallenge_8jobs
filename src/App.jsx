@@ -3,7 +3,7 @@ import SelectPage from './components/SelectPage';
 import Filter from './components/Filter';
 import Description from './components/Description';
 import JobsList from './components/JobsList';
-import useFilters from './hooks/useFilters';
+import useFilstersJobs from './hooks/useFiltersJobs';
 import useJobs from './hooks/useJobs';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
 		changeCityFilter,
 		changeJobTime,
 		changeKeyWordFilter,
-	} = useFilters();
+	} = useFilstersJobs();
 
 	const { jobs, refreshJobs } = useJobs({ page, location, keyWord, fullTime });
 
@@ -26,12 +26,15 @@ const App = () => {
 			<p>just for USA jobs</p>
 
 			<Routes>
-				<Route path='/' element={<Navigate to='/search?page=1' />} />
+				<Route
+					path='/'
+					element={<Navigate to='/search?page=1&location=Florida' />}
+				/>
 				<Route path='/description' element={<Description />} />
 				<Route
 					path='/search'
 					element={
-						<>
+						<main>
 							<Filter
 								fullTime={fullTime}
 								filterLocation={location}
@@ -68,7 +71,7 @@ const App = () => {
 							{!jobs.searching && jobs.error && (
 								<p>search error, please try later</p>
 							)}
-						</>
+						</main>
 					}
 				/>
 			</Routes>

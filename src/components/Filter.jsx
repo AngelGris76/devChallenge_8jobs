@@ -1,4 +1,9 @@
-import { useEffect, useState } from 'react';
+import InputText from './InputText';
+import InputRadioCity from './InputRadioCity';
+import PortfolioIcon from './icons/PortfolioIcon';
+import useFilter from '../hooks/useFilter';
+import { CITIES } from '../values/cities';
+import { FIELDTEXT } from '../values/filterFieldText';
 
 const Filter = ({
 	fullTime,
@@ -8,62 +13,53 @@ const Filter = ({
 	changeCityFilter,
 	changeKeyWordFilter,
 }) => {
-	const [city, setCity] = useState(() => {
-		return filterLocation ? filterLocation : '';
+	const { city, keyWord, setCity, setKeyWord } = useFilter({
+		filterLocation,
+		filterKeyWord,
+		changeCityFilter,
+		changeKeyWordFilter,
 	});
 
-	const [keyWord, setKeyWord] = useState(() => {
-		return filterKeyWord ? filterKeyWord : '';
-	});
-
-	useEffect(() => {
-		if (city === filterLocation) return;
-		if (city === '' && !filterLocation) return;
-		const timeoutCityID = setTimeout(() => {
-			changeCityFilter(city);
-		}, 300);
-		return () => {
-			clearTimeout(timeoutCityID);
-		};
-	}, [city, changeCityFilter, filterLocation]);
-
-	useEffect(() => {
-		if (keyWord === filterKeyWord) return;
-		if (keyWord === '' && !filterKeyWord) return;
-		const timeoutKeyWordID = setTimeout(() => {
-			changeKeyWordFilter(keyWord);
-		}, 300);
-		return () => {
-			clearTimeout(timeoutKeyWordID);
-		};
-	}, [keyWord, changeKeyWordFilter, filterKeyWord]);
+	const citiesRadioButtons = CITIES.map((city) => (
+		<InputRadioCity
+			key={city}
+			text={city}
+			onChange={(newCity) => {
+				setCity(newCity);
+			}}
+		/>
+	));
 
 	return (
 		<>
-			<label>
-				<span>City: </span>
-				<input
-					type='text'
-					value={city}
-					onChange={(ev) => {
-						setCity(ev.target.value);
-					}}
-				/>
-			</label>
-			<label>
-				<span>KeyWord to search </span>
-				<input
-					type='text'
+			<div>
+				<InputText
+					startIcon={<PortfolioIcon width='24px' height='24px' />}
+					text={FIELDTEXT.search}
 					value={keyWord}
-					onChange={(ev) => {
-						setKeyWord(ev.target.value);
+					onChange={(newKeyword) => {
+						setKeyWord(newKeyword);
 					}}
 				/>
-			</label>
-			<label>
-				<span>Full time job</span>
-				<input type='checkbox' checked={!!fullTime} onChange={changeJobTime} />
-			</label>
+			</div>
+			<div>
+				<label>
+					<span>Full time job</span>
+					<input
+						type='checkbox'
+						checked={!!fullTime}
+						onChange={changeJobTime}
+					/>
+				</label>
+				<InputText
+					text={FIELDTEXT.city}
+					value={city}
+					onChange={(newCity) => {
+						setCity(newCity);
+					}}
+				/>
+				<div>{citiesRadioButtons}</div>
+			</div>
 		</>
 	);
 };

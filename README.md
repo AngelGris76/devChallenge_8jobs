@@ -21,3 +21,22 @@ results_per_page: resultados por pagina
 where: ubicacion del trabajo
 what: clave a buscar
 full_time: si es igual a 1, indica trabajos full time
+
+### requisitos
+
+- ~~se puede ver una lista de trabajos en una ciudad por defecto~~
+- ~~se puede buscar trabajos con una descripcion determinada~~
+- ~~se puede buscar trabajos por nombre de ciudad, codigo zip, u otro~~
+- ~~se puede escoger entre 4 opciones predeterminadas~~
+- ~~se puede buscar sólo trabajos full time~~
+- ~~se verá la lista de trabajos con logo, nombre de compañía ubicación y el tiempo de publicación~~
+- ~~cuando se seleccione un trabajo, se verá la descripción y como aplicar~~
+- ~~cuando se esté en la descripción, se podrá volver atrás~~
+- ~~opcional, se podrá ver la lista de trabajos en diferentes páginas~~
+
+####
+
+La api que estoy utilizando no muestra logo.
+No muestra una descripción completa y tampoco como aplicar al trabajo
+La ubicación por defecto es Florida
+Las opciones predeterminadas serán distintas ciudades
