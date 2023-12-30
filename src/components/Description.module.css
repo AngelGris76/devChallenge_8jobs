@@ -1,0 +1,98 @@
+.section {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+
+	font-family: Roboto;
+	color: var(--very-dark-blue);
+}
+
+@media (min-width: 400px) {
+	.section {
+		flex-direction: row;
+	}
+}
+
+.link {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+
+	min-width: 200px;
+	margin-top: 1.4rem;
+
+	font-family: Poppins;
+	font-size: 0.9rem;
+	font-weight: 500;
+	text-decoration: none;
+
+	color: var(--light-blue);
+}
+
+.title {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
+	flex-wrap: wrap;
+
+	font-size: 1.5rem;
+	font-weight: 700;
+}
+
+.contractType {
+	padding: 0.5rem;
+	font-size: 0.9rem;
+
+	border: 1px solid var(--very-dark-blue);
+	border-radius: 0.25rem;
+}
+
+.createdTime {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
+
+	color: var(--gray);
+}
+
+.companyPost {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 1rem;
+
+	font-size: 1.15rem;
+	font-weight: 700;
+}
+
+.logoContainer {
+	width: 2.63rem;
+	height: 2.63rem;
+
+	font-size: 0.75rem;
+	font-weight: 500;
+
+	background-color: var(--gray);
+
+	border: none;
+	border-radius: 0.25rem;
+	overflow: hidden;
+}
+
+.logoImg {
+	display: block;
+	width: 100%;
+}
+
+.jobLocation {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 0.8rem;
+
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--gray);
+}
