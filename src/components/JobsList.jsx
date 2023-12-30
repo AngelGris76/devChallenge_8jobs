@@ -1,4 +1,5 @@
 import JobResume from './JobResume';
+import style from './JobsList.module.css';
 
 const JobsList = ({ jobs }) => {
 	const renderedJobs = jobs.map((job) => (
@@ -13,7 +14,7 @@ const JobsList = ({ jobs }) => {
 		/>
 	));
 
-	return <ul>{renderedJobs}</ul>;
+	return <ul className={style.jobList}>{renderedJobs}</ul>;
 };
 
 export default JobsList;

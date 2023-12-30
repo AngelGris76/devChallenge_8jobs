@@ -1,0 +1,8 @@
+.jobList {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+
+	list-style: none;
+	padding: 0;
+}
