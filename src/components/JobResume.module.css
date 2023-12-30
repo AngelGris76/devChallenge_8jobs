@@ -1,0 +1,73 @@
+.listLink {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+	padding: 0.75rem;
+
+	color: var(--very-dark-blue);
+	background-color: var(--white);
+
+	font-family: Roboto;
+	text-decoration: none;
+
+	border: none;
+	border-radius: 0.25rem;
+	box-shadow: 0 2px 4px 0 var(--transparent-black);
+}
+
+.logoContainer {
+	width: 5.75rem;
+	height: 5.75rem;
+	flex-shrink: 0;
+	background-color: var(--very-light-gray);
+	border-radius: 0.25rem;
+	overflow: hidden;
+}
+
+.logImg {
+	width: 100%;
+}
+
+.jobText {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-shrink: 0;
+	margin-bottom: 0.5rem;
+}
+
+.jobCompany {
+	font-size: 0.75rem;
+	font-weight: 700;
+}
+
+.jobPosition {
+	font-size: 1.1rem;
+}
+
+.jobContract {
+	padding: 0.5rem;
+	font-size: 0.75rem;
+	font-weight: 700;
+
+	border: 1px solid var(--very-dark-blue);
+	border-radius: 0.25rem;
+}
+
+.jobPost {
+	margin-right: 0;
+	margin-left: auto;
+
+	align-self: flex-end;
+
+	color: var(--gray);
+}
+
+.jobLocation,
+.jobCreated {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-left: 3rem;
+}
