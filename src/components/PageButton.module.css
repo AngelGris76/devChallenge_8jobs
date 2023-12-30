@@ -1,0 +1,22 @@
+.pageButton {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	width: 2rem;
+	height: 2rem;
+
+	font-family: Roboto;
+	font-size: 0.75rem;
+
+	color: var(--gray);
+	background-color: transparent;
+	border: 1px solid var(--gray);
+	border-radius: 0.25rem;
+}
+
+.pageButton[aria-pressed='true'] {
+	color: var(--white);
+	background-color: var(--light-blue);
+	border-color: var(--light-blue);
+}

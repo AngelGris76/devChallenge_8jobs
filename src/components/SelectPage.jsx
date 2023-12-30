@@ -1,4 +1,5 @@
 import PageButton from './PageButton';
+import style from './SelectPage.module.css';
 
 const SelectPage = ({ totalPages, actualPage, changePage }) => {
 	const decPage = (actualPage) => {
@@ -24,7 +25,7 @@ const SelectPage = ({ totalPages, actualPage, changePage }) => {
 	));
 
 	return (
-		<ul>
+		<ul className={style.buttonList}>
 			<PageButton
 				text='<'
 				disabled={actualPage === 1}

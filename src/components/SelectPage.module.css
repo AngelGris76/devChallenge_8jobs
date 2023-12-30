@@ -1,0 +1,11 @@
+.buttonList {
+	grid-column: 2 / -1;
+
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0;
+
+	list-style: none;
+}
