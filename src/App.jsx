@@ -5,6 +5,7 @@ import Description from './components/Description';
 import JobsList from './components/JobsList';
 import useFilstersJobs from './hooks/useFiltersJobs';
 import useJobs from './hooks/useJobs';
+import style from './App.module.css';
 
 const App = () => {
 	const {
@@ -22,8 +23,11 @@ const App = () => {
 
 	return (
 		<>
-			<h1>Jobs search app</h1>
-			<p>just for USA jobs</p>
+			<h1 className={style.Apptitle}>
+				<span className={style.Appname}>Adzuna </span>
+				<span className={style.Apputil}>jobs</span>
+			</h1>
+			<p className={style.Appparagraph}>just for USA jobs</p>
 
 			<Routes>
 				<Route
@@ -34,7 +38,7 @@ const App = () => {
 				<Route
 					path='/search'
 					element={
-						<main>
+						<main className={style.mainContainer}>
 							<Filter
 								fullTime={fullTime}
 								filterLocation={location}

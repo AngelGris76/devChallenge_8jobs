@@ -1,0 +1,26 @@
+.Apptitle {
+	font-size: 1.5rem;
+}
+.Appname {
+	font-weight: 700;
+}
+.Apputil {
+	font-weight: 300;
+}
+
+.Appparagraph {
+	font-weight: 300;
+	font-size: 0.8rem;
+}
+
+.mainContainer {
+	display: grid;
+	grid-template-columns: 1;
+	gap: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+	.mainContainer {
+		grid-template-columns: 1fr 2fr;
+	}
+}
