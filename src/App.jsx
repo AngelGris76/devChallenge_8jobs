@@ -6,6 +6,7 @@ import JobsList from './components/JobsList';
 import useFilstersJobs from './hooks/useFiltersJobs';
 import useJobs from './hooks/useJobs';
 import style from './App.module.css';
+import Spinner from './components/Spinner';
 
 const App = () => {
 	const {
@@ -57,7 +58,7 @@ const App = () => {
 								}}
 							/>
 
-							{jobs.searching && <p>buscando</p>}
+							{jobs.searching && <Spinner />}
 
 							{!jobs.searching && !jobs.error && (
 								<>
