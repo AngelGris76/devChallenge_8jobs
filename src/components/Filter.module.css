@@ -1,0 +1,65 @@
+.searchContainer {
+	height: 9.5rem;
+	padding: 0 10%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	grid-column: 1 / -1;
+
+	background-image: url('./assets/backgroundImg.png');
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+.checkboxContainer {
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 1rem;
+	margin-bottom: 2.75rem;
+
+	font-size: 0.75rem;
+	font-weight: 500;
+	color: var(--very-dark-blue);
+}
+
+.checkbox {
+	appearance: none;
+}
+
+.emulateCheckbox {
+	position: relative;
+
+	width: 1.15rem;
+	height: 1.15rem;
+	margin-right: 1rem;
+
+	border: 1px solid var(--gray);
+	border-radius: 2px;
+}
+
+.checkbox:checked ~ .emulateCheckbox {
+	border-color: var(--light-blue);
+	background-color: var(--light-blue);
+}
+
+.locationHeader {
+	text-transform: uppercase;
+	font-size: 0.9rem;
+	margin-bottom: 1.5rem;
+	color: var(--gray);
+}
+
+.radioCityContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: flex-start;
+
+	padding-left: 1rem;
+	margin-top: 1.5rem;
+}
